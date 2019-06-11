@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- Custom Style -->
+    <!-- <link rel="stylesheet" href="assets/css/style.css" /> -->
+    <!-- Document Title -->
+    <title>Time Sheet</title>
+  </head>
+
+  <body>
+    <!-- Page Heading -->
+    <div class="jumbotron jumbotron-fluid text-center">
+      <h1 class="display-4 font-weight-bold">Anytime is Train Time</h1>
+      <h4 class="font-weight-bold">
+        Choo Choo. Chee Chee.
+      </h4>
+    </div>
+    <!-- Current Trains -->
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          Current Train Schedule
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Train Name</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Frequency (min)</th>
+                <th scope="col">Next Arrival</th>
+                <th scope="col">Minutes Away</th>
+              </tr>
+            </thead>
+            <tbody id="populateData"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="container mt-3">
+      <div class="card">
+        <div class="card-header">
+          Add Trains
+        </div>
+        <div class="card-body mt-3">
+          <!-- Add Trains -->
+          <div class="container">
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Train Name</label>
+                <input type="text" class="form-control" id="train-input" />
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput2">Destination</label>
+                <input
+                  type="destination"
+                  class="form-control"
+                  id="destination-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1"
+                  >First Train Time (HH:mm - military time)</label
+                >
+                <input
+                  type="startTime"
+                  class="form-control"
+                  id="startTime-input"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput2">Frequency (min)</label>
+                <input
+                  type="frequency"
+                  class="form-control"
+                  id="frequency-input"
+                />
+              </div>
+              <!-- Submit Button -->
+              <button id="add-Train" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+    <!-- Moment JS -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <!-- jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <!-- App.js (Core Functionality) -->
+    <script src="assets/js/logic.js"></script>
+  </body>
+</html>
