@@ -1,3 +1,6 @@
+body {
+  background: url("../images/trainPic.png");
+}
 .jumbotron {
   background-color: rgb(104, 58, 58);
   display: block;
