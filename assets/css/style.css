@@ -1,0 +1,18 @@
+.jumbotron {
+  background-color: rgb(104, 58, 58);
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  color: white;
+}
+
+.card-header {
+  background-color: rgb(107, 171, 192);
+  color: white;
+  font-weight: bold;
+}
+
+.btn {
+  background-color: rgb(107, 171, 192);
+  font-weight: bold;
+}

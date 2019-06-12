@@ -14,8 +14,11 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 var currentTime = moment();
 
+// Create Firebase event for adding train to the database and a row in the html when a user
+// adds an entry
 database.ref().on("child_added", function(childSnapshot) {
   console.log(childSnapshot.val());
+  // Store data in variables
 
   var train = childSnapshot.val().train;
   var destination = childSnapshot.val().destination;
@@ -28,6 +31,8 @@ database.ref().on("child_added", function(childSnapshot) {
   console.log(destination);
   console.log(startTime);
   console.log(frequency);
+
+  // Creates the new Row of data
 
   $("#train-table > tbody").append(
     "<tr><td>" +
@@ -43,12 +48,16 @@ database.ref().on("child_added", function(childSnapshot) {
       "</td></tr>"
   );
 });
+
 database.ref().on("value", function(snapshot) {});
 
+// Plays sound when button is clicked
+var audio = new Audio("assets/images/trainWhistle.mp3");
+$("#add-train").click(() => audio.play());
+
+// Inputting new train, checks to ensure entry in each field
+
 $("#add-train").on("click", function() {
-  // YOUR TASK!!!
-  // Code in the logic for storing and retrieving the most recent user.
-  // Don't forget to provide initial data to your Firebase database.
   var train = $("#train-input")
     .val()
     .trim();
@@ -81,6 +90,7 @@ $("#add-train").on("click", function() {
     return false;
   }
 
+  //   Math formulas for nextArrival and minutesAway
   var startTimeConverted = moment(startTime, "hh:mm").subtract("1, years");
 
   var difference = currentTime.diff(moment(startTimeConverted), "minutes");
@@ -90,6 +100,7 @@ $("#add-train").on("click", function() {
     .add(minutesAway, "minutes")
     .format("hh:mm a");
 
+  // New train entered into a variable with properties defined
   var newTrain = {
     train: train,
     destination: destination,
@@ -99,7 +110,7 @@ $("#add-train").on("click", function() {
     next: nextArrival
   };
 
-  // Code for the push
+  // Code for the push to firebase
   database.ref().push(newTrain);
   console.log(newTrain.train);
   console.log(newTrain.destination);
