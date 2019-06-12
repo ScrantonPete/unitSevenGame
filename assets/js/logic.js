@@ -12,7 +12,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // Reference to the database we're writing to.
 var database = firebase.database();
-var currentTime = moment();
 
 // Create Firebase event for adding train to the database and a row in the html when a user
 // adds an entry
@@ -91,10 +90,15 @@ $("#add-train").on("click", function() {
   }
 
   //   Math formulas for nextArrival and minutesAway
+  var currentTime = moment();
   var startTimeConverted = moment(startTime, "hh:mm").subtract("1, years");
-
+  // console.log("startTimeConverted: " + startTimeConverted);
   var difference = currentTime.diff(moment(startTimeConverted), "minutes");
+  // console.log("difference: " + difference);
+  // console.log("currentTime: " + currentTime);
   var remainder = difference % frequency;
+  // console.log("remainder: " + remainder);
+
   var minutesAway = frequency - remainder;
   var nextArrival = moment()
     .add(minutesAway, "minutes")
